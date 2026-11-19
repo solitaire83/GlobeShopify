@@ -448,8 +448,16 @@ body {
 
 /* typewriter */
 .factoid-typewriter {
-  position: relative;
+  display: grid;
   overflow: hidden;
+}
+
+.factoid-typewriter > .factoid-heading {
+  grid-area: 1 / 1;
+}
+
+.factoid-typewriter > .factoid-subheading {
+  grid-area: 2 / 1;
 }
 
 .factoid-typewriter[data-typing] > :is(.factoid-heading, .factoid-subheading) {
@@ -457,8 +465,8 @@ body {
 }
 
 .factoid-typewriter-live {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  grid-area: 1 / 1 / 3 / 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
