@@ -17,10 +17,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body:has([data-dragging]) {
-  user-select: none;
-}
-
 /* 640 / 900 / 1200 / 1600 */
 .globe-section {
   --margin: 1rem;

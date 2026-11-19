@@ -115,12 +115,14 @@ export async function createScene(container: HTMLElement, hosts: HTMLElement[]) 
   const hover = (on: boolean) => {
     hovering = on;
     controls.autoRotate = !on;
-    document.body.style.cursor = on ? (dragging ? "grabbing" : "grab") : "";
+    document.body.style.cursor = on ? "grab" : "";
   };
 
   const raycaster = new Raycaster();
   const pointer = new Vector2();
+  renderer.domElement.addEventListener("mousedown", (e) => e.preventDefault());
   renderer.domElement.addEventListener("mousemove", (e) => {
+    if (dragging) return;
     const rect = renderer.domElement.getBoundingClientRect();
     pointer.set(((e.clientX - rect.left) / rect.width) * 2 - 1, -((e.clientY - rect.top) / rect.height) * 2 + 1);
     raycaster.setFromCamera(pointer, camera);
